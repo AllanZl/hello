@@ -1,0 +1,156 @@
+[
+  {
+    "source_ied": "ProtIED1",
+    "target_ied": "ALL_SUBSCRIBERS",
+    "link_type": "GOOSE",
+    "link_id": "GCB01",
+    "multicast_address": "01-0C-CD-01-00-01",
+    "vlan_id": "100",
+    "app_id": "Events",
+    "data_set": "Events",
+    "control_block": "GCB01"
+  },
+  {
+    "source_ied": "ProtIED2",
+    "target_ied": "SMV_SUBSCRIBERS",
+    "link_type": "SMV",
+    "link_id": "MSVCB01",
+    "multicast_address": "01-0C-CD-04-00-01",
+    "vlan_id": "101",
+    "app_id": "TestSMV01",
+    "data_set": "MeasValues",
+    "control_block": "MSVCB01"
+  },
+  {
+    "source_ied": "ProtIED2",
+    "target_ied": "ProtIED1",
+    "link_type": "Client-Server",
+    "link_id": "ProtIED2_to_ProtIED1",
+    "multicast_address": "",
+    "vlan_id": "",
+    "app_id": "",
+    "data_set": "",
+    "control_block": ""
+  },
+  {
+    "source_ied": "MeasIED1",
+    "target_ied": "ProtIED1",
+    "link_type": "Client-Server",
+    "link_id": "MeasIED1_to_ProtIED1",
+    "multicast_address": "",
+    "vlan_id": "",
+    "app_id": "",
+    "data_set": "",
+    "control_block": ""
+  },
+  {
+    "source_ied": "ControlIED",
+    "target_ied": "ProtIED1",
+    "link_type": "Client-Server",
+    "link_id": "ControlIED_to_ProtIED1",
+    "multicast_address": "",
+    "vlan_id": "",
+    "app_id": "",
+    "data_set": "",
+    "control_block": ""
+  },
+  {
+    "source_ied": "ProtIED1",
+    "target_ied": "ProtIED2",
+    "link_type": "Client-Server",
+    "link_id": "ProtIED1_to_ProtIED2",
+    "multicast_address": "",
+    "vlan_id": "",
+    "app_id": "",
+    "data_set": "",
+    "control_block": ""
+  },
+  {
+    "source_ied": "MeasIED1",
+    "target_ied": "ProtIED2",
+    "link_type": "Client-Server",
+    "link_id": "MeasIED1_to_ProtIED2",
+    "multicast_address": "",
+    "vlan_id": "",
+    "app_id": "",
+    "data_set": "",
+    "control_block": ""
+  },
+  {
+    "source_ied": "ControlIED",
+    "target_ied": "ProtIED2",
+    "link_type": "Client-Server",
+    "link_id": "ControlIED_to_ProtIED2",
+    "multicast_address": "",
+    "vlan_id": "",
+    "app_id": "",
+    "data_set": "",
+    "control_block": ""
+  },
+  {
+    "source_ied": "ProtIED1",
+    "target_ied": "MeasIED1",
+    "link_type": "Client-Server",
+    "link_id": "ProtIED1_to_MeasIED1",
+    "multicast_address": "",
+    "vlan_id": "",
+    "app_id": "",
+    "data_set": "",
+    "control_block": ""
+  },
+  {
+    "source_ied": "ProtIED2",
+    "target_ied": "MeasIED1",
+    "link_type": "Client-Server",
+    "link_id": "ProtIED2_to_MeasIED1",
+    "multicast_address": "",
+    "vlan_id": "",
+    "app_id": "",
+    "data_set": "",
+    "control_block": ""
+  },
+  {
+    "source_ied": "ControlIED",
+    "target_ied": "MeasIED1",
+    "link_type": "Client-Server",
+    "link_id": "ControlIED_to_MeasIED1",
+    "multicast_address": "",
+    "vlan_id": "",
+    "app_id": "",
+    "data_set": "",
+    "control_block": ""
+  },
+  {
+    "source_ied": "ProtIED1",
+    "target_ied": "ControlIED",
+    "link_type": "Client-Server",
+    "link_id": "ProtIED1_to_ControlIED",
+    "multicast_address": "",
+    "vlan_id": "",
+    "app_id": "",
+    "data_set": "",
+    "control_block": ""
+  },
+  {
+    "source_ied": "ProtIED2",
+    "target_ied": "ControlIED",
+    "link_type": "Client-Server",
+    "link_id": "ProtIED2_to_ControlIED",
+    "multicast_address": "",
+    "vlan_id": "",
+    "app_id": "",
+    "data_set": "",
+    "control_block": ""
+  },
+  {
+    "source_ied": "MeasIED1",
+    "target_ied": "ControlIED",
+    "link_type": "Client-Server",
+    "link_id": "MeasIED1_to_ControlIED",
+    "multicast_address": "",
+    "vlan_id": "",
+    "app_id": "",
+    "data_set": "",
+    "control_block": ""
+  }
+]

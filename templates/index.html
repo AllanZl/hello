@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="text-center mb-5">
+            <h1 class="display-4 mb-3">
+                <i class="fas fa-network-wired text-primary"></i>
+                SCD Parser & Visualizer
+            </h1>
+            <p class="lead">
+                Parse IEC 61850 SCD files and visualize logical links between Intelligent Electronic Devices (IEDs)
+            </p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <i class="fas fa-file-code fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Parse SCD Files</h5>
+                        <p class="card-text">
+                            Extract IED information, logical nodes, and communication settings from SCD files
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <i class="fas fa-project-diagram fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Visualize Networks</h5>
+                        <p class="card-text">
+                            Generate logical link diagrams showing GOOSE, SMV, and Client-Server connections
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <i class="fas fa-download fa-3x text-info mb-3"></i>
+                        <h5 class="card-title">Export Diagrams</h5>
+                        <p class="card-text">
+                            Export network diagrams in PNG, SVG, PDF formats for documentation and sharing
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Get Started</h5>
+                <p class="card-text">
+                    Upload your SCD file to extract IED information and generate network visualization
+                </p>
+                <a href="{{ url_for('upload_file') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-upload me-2"></i>Upload SCD File
+                </a>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-cogs"></i> Features
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>IED extraction and analysis</li>
+                            <li><i class="fas fa-check text-success me-2"></i>GOOSE communication links</li>
+                            <li><i class="fas fa-check text-success me-2"></i>SMV (Sampled Values) links</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Client-Server connections</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Interactive web interface</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Multiple export formats</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-tools"></i> Technologies
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><i class="fab fa-python text-warning me-2"></i>Python with lxml parsing</li>
+                            <li><i class="fas fa-project-diagram text-info me-2"></i>NetworkX & Graphviz</li>
+                            <li><i class="fas fa-chart-line text-success me-2"></i>Matplotlib visualization</li>
+                            <li><i class="fas fa-globe text-primary me-2"></i>Flask web framework</li>
+                            <li><i class="fab fa-bootstrap text-purple me-2"></i>Bootstrap UI</li>
+                            <li><i class="fas fa-code text-dark me-2"></i>IEC 61850 compliant</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
