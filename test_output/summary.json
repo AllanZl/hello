@@ -1,0 +1,36 @@
+{
+  "substation": {
+    "name": "TestSubstation",
+    "desc": "110kV Test Substation"
+  },
+  "communication": {
+    "subnets": [
+      {
+        "name": "StationBus",
+        "type": "8-MMS",
+        "desc": "Station Bus Network",
+        "connected_aps": [
+          "ProtIED1_AP1",
+          "ProtIED2_AP1",
+          "MeasIED1_AP1",
+          "ControlIED_AP1"
+        ]
+      }
+    ],
+    "connected_aps": []
+  },
+  "statistics": {
+    "total_ieds": 4,
+    "total_links": 14,
+    "ied_types": {
+      "Protection": 2,
+      "Measurement": 1,
+      "Control": 1
+    },
+    "link_types": {
+      "GOOSE": 1,
+      "SMV": 1,
+      "Client-Server": 12
+    }
+  }
+}

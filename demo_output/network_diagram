@@ -1,0 +1,27 @@
+// IED Logical Links
+digraph {
+	dpi=300 rankdir=TB size="12,8"
+	graph [bgcolor=white fontname=Arial fontsize=12 nodesep=1.0 ranksep=1.5 splines=ortho]
+	node [fontname=Arial fontsize=10 margin="0.3,0.1" shape=box style="filled,rounded"]
+	edge [arrowsize=0.7 fontname=Arial fontsize=8]
+	ProtIED1 [label="ProtIED1\n(Protection)\nLDs: 1" fillcolor=lightblue tooltip="TestVendor Protection"]
+	ProtIED2 [label="ProtIED2\n(Protection)\nLDs: 2" fillcolor=lightblue tooltip="TestVendor Protection"]
+	MeasIED1 [label="MeasIED1\n(Measurement)\nLDs: 1" fillcolor=lightyellow tooltip="TestVendor Measurement"]
+	ControlIED [label="ControlIED\n(Control)\nLDs: 1" fillcolor=lightgreen tooltip="TestVendor Control"]
+	ALL_SUBSCRIBERS [label="ALL\nSUBSCRIBERS" fillcolor=lightgray shape=ellipse style=filled]
+	SMV_SUBSCRIBERS [label="SMV\nSUBSCRIBERS" fillcolor=lightgray shape=ellipse style=filled]
+	ProtIED1 -> ALL_SUBSCRIBERS [label="GOOSE\nGCB01\nVLAN:100" color=blue constraint=true tooltip="GOOSE: GCB01"]
+	ProtIED2 -> SMV_SUBSCRIBERS [label="SMV\nMSVCB01\nVLAN:101" color=red constraint=true tooltip="SMV: MSVCB01"]
+	ProtIED2 -> ProtIED1 [label="Client-Server\nProtIED2_to_ProtIED1" color=green constraint=true tooltip="Client-Server: ProtIED2_to_ProtIED1"]
+	MeasIED1 -> ProtIED1 [label="Client-Server\nMeasIED1_to_ProtIED1" color=green constraint=true tooltip="Client-Server: MeasIED1_to_ProtIED1"]
+	ControlIED -> ProtIED1 [label="Client-Server\nControlIED_to_ProtIED1" color=green constraint=true tooltip="Client-Server: ControlIED_to_ProtIED1"]
+	ProtIED1 -> ProtIED2 [label="Client-Server\nProtIED1_to_ProtIED2" color=green constraint=true tooltip="Client-Server: ProtIED1_to_ProtIED2"]
+	MeasIED1 -> ProtIED2 [label="Client-Server\nMeasIED1_to_ProtIED2" color=green constraint=true tooltip="Client-Server: MeasIED1_to_ProtIED2"]
+	ControlIED -> ProtIED2 [label="Client-Server\nControlIED_to_ProtIED2" color=green constraint=true tooltip="Client-Server: ControlIED_to_ProtIED2"]
+	ProtIED1 -> MeasIED1 [label="Client-Server\nProtIED1_to_MeasIED1" color=green constraint=true tooltip="Client-Server: ProtIED1_to_MeasIED1"]
+	ProtIED2 -> MeasIED1 [label="Client-Server\nProtIED2_to_MeasIED1" color=green constraint=true tooltip="Client-Server: ProtIED2_to_MeasIED1"]
+	ControlIED -> MeasIED1 [label="Client-Server\nControlIED_to_MeasIED1" color=green constraint=true tooltip="Client-Server: ControlIED_to_MeasIED1"]
+	ProtIED1 -> ControlIED [label="Client-Server\nProtIED1_to_ControlIED" color=green constraint=true tooltip="Client-Server: ProtIED1_to_ControlIED"]
+	ProtIED2 -> ControlIED [label="Client-Server\nProtIED2_to_ControlIED" color=green constraint=true tooltip="Client-Server: ProtIED2_to_ControlIED"]
+	MeasIED1 -> ControlIED [label="Client-Server\nMeasIED1_to_ControlIED" color=green constraint=true tooltip="Client-Server: MeasIED1_to_ControlIED"]
+}

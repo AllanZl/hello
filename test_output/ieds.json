@@ -1,0 +1,55 @@
+[
+  {
+    "name": "ProtIED1",
+    "type": "Protection",
+    "manufacturer": "TestVendor",
+    "config_version": "1.0",
+    "desc": "",
+    "logical_devices": [
+      "CTRL"
+    ],
+    "access_points": [
+      "AP1"
+    ]
+  },
+  {
+    "name": "ProtIED2",
+    "type": "Protection",
+    "manufacturer": "TestVendor",
+    "config_version": "1.0",
+    "desc": "",
+    "logical_devices": [
+      "MSVCB",
+      "PTRC"
+    ],
+    "access_points": [
+      "AP1"
+    ]
+  },
+  {
+    "name": "MeasIED1",
+    "type": "Measurement",
+    "manufacturer": "TestVendor",
+    "config_version": "1.0",
+    "desc": "",
+    "logical_devices": [
+      "TVTR"
+    ],
+    "access_points": [
+      "AP1"
+    ]
+  },
+  {
+    "name": "ControlIED",
+    "type": "Control",
+    "manufacturer": "TestVendor",
+    "config_version": "1.0",
+    "desc": "",
+    "logical_devices": [
+      "CTRL"
+    ],
+    "access_points": [
+      "AP1"
+    ]
+  }
+]

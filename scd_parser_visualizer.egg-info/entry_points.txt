@@ -1,0 +1,2 @@
+[console_scripts]
+scd-parser = scd_parser.cli:main

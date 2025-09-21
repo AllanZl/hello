@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block title %}Network Visualization - SCD Parser{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>
+                <i class="fas fa-project-diagram text-primary"></i>
+                Network Visualization
+            </h2>
+            <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown">
+                    <i class="fas fa-download me-2"></i>Download
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="{{ url_for('download_diagram', session_file=session_file, format_type='png') }}">
+                            <i class="fas fa-file-image me-2"></i>PNG Image
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ url_for('download_diagram', session_file=session_file, format_type='svg') }}">
+                            <i class="fas fa-code me-2"></i>SVG Vector
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ url_for('download_diagram', session_file=session_file, format_type='pdf') }}">
+                            <i class="fas fa-file-pdf me-2"></i>PDF Document
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ url_for('download_diagram', session_file=session_file, format_type='matplotlib') }}">
+                            <i class="fas fa-chart-line me-2"></i>Matplotlib PNG
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Network Statistics -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-microchip fa-2x text-primary mb-2"></i>
+                        <h4 class="mb-0">{{ stats.total_ieds }}</h4>
+                        <small class="text-muted">IEDs</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-link fa-2x text-success mb-2"></i>
+                        <h4 class="mb-0">{{ stats.total_links }}</h4>
+                        <small class="text-muted">Links</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-percentage fa-2x text-info mb-2"></i>
+                        <h4 class="mb-0">{{ "%.2f"|format(stats.network_density * 100) }}%</h4>
+                        <small class="text-muted">Density</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-exchange-alt fa-2x text-warning mb-2"></i>
+                        <h4 class="mb-0">{{ "%.1f"|format(stats.average_degree) }}</h4>
+                        <small class="text-muted">Avg Degree</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-info-circle"></i> IED Types
+                    </div>
+                    <div class="card-body">
+                        {% for ied_type, count in stats.ied_types.items() %}
+                        <span class="badge bg-primary me-2 mb-2">{{ ied_type }}: {{ count }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-link"></i> Link Types
+                    </div>
+                    <div class="card-body">
+                        {% for link_type, count in stats.link_types.items() %}
+                        <span class="badge bg-{{ 'primary' if link_type == 'GOOSE' else 'danger' if link_type == 'SMV' else 'success' }} me-2 mb-2">
+                            {{ link_type }}: {{ count }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Network Diagram -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-project-diagram"></i> Network Topology Diagram
+            </div>
+            <div class="card-body text-center">
+                <div class="border rounded p-3" style="background-color: #f8f9fa; overflow-x: auto;">
+                    {{ svg_content|safe }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-lightbulb"></i> Diagram Legend
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><i class="fas fa-square text-primary me-2"></i>Blue boxes: IED devices</li>
+                            <li><i class="fas fa-circle text-muted me-2"></i>Gray circles: Broadcast groups</li>
+                            <li><i class="fas fa-arrow-right text-primary me-2"></i>Blue arrows: GOOSE links</li>
+                            <li><i class="fas fa-arrow-right text-danger me-2"></i>Red arrows: SMV links</li>
+                            <li><i class="fas fa-arrow-right text-success me-2"></i>Green arrows: Client-Server</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-cogs"></i> Actions
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-primary" onclick="window.print()">
+                                <i class="fas fa-print me-2"></i>Print Diagram
+                            </button>
+                            <a href="{{ url_for('upload_file') }}" class="btn btn-outline-secondary">
+                                <i class="fas fa-upload me-2"></i>Upload New SCD File
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Print styles */
+@media print {
+    .navbar, .btn-group, .card:not(.card:has(svg)) {
+        display: none !important;
+    }
+    .card svg {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* SVG responsiveness */
+.card-body svg {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: scd-parser-visualizer
+Version: 1.0.0
+Summary: SCD File Parser and Logical Link Visualizer
+Author: SCD Parser Team
+Requires-Python: >=3.8
